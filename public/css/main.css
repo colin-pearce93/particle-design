@@ -17,8 +17,8 @@ canvas {
 
 .slider-form {
 	position: absolute;
-	width: 265px;
-	height: 280px;
+	width: 250px;
+	height: 100%;
 	background-color: hsla(120,100%,100%,0.4);
 	border-radius: 0px 0px 2px 0px;
 }
@@ -34,7 +34,7 @@ input[type=range] {
 	position: relative;
   -webkit-appearance: none;
   width: 200px;
-  margin: 40.8px 0px 0px 20px;
+  margin: 45.8px 0px 0px 20px;
   float: left;
 }
 input[type=range]:focus {
