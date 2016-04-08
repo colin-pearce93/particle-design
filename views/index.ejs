@@ -8,157 +8,18 @@
 
 </head>
 <body>
-	
-	<script>
-		window.onload = function(){
-			// initialize variables
-			var canvas 		   = document.createElement("canvas"),
-				c      		   = canvas.getContext("2d"),
-				//stores the particle id's. It allows us to delete particles after a certian period of time
-				particles      = {},
-				particleIndex  = 0,
-				particleAmount = 1,
-				setGravity     = -.02;
-			
-			//create dimension properties that will be used when we create our full page fillRectangle
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
 
-			//create a canvas element
-			document.body.appendChild(canvas);
-
-			//fill the main canvas with the color black 
-			c.fillStyle = "black";
-			//set it equal to dimensions provided earlier
-			c.fillRect(0, 0, canvas.width, canvas.height);
-
-
-			//creating a particle object with various properties
-			function Particle(){
-				this.tunnelRadius = (canvas.width / 2);
-
-				//give the particle an intitial position
-				this.x = Math.random() * this.tunnelRadius + this.tunnelRadius / 2;
-				this.y = Math.random() * 1000 - 200;
-
-
-				//increment a global variable to allow us to push each new particle into the object provided above
-				this.id = particleIndex++;
-				//set the object equal to the newly created particle at the next index
-				particles[particleIndex] = this;
-				this.id = particleIndex;
-	
-
-				//give each particle a velocity
-				this.vx = Math.random();
-				this.vy = .9;				
-
-				//this will be added to the velocity each frame
-				this.gravity = -.007;
-
-				//give the particle a starting and ending point in frames 
-				this.life = 0;
-				this.maxLife = Math.random() * 20 + 200;
-
-				//use these values to fade up and down before deleting				
-				this.alphaRadians = 0;
-				this.alpha = 0;
-				this.radius = (2.5) * Math.random();
-				
-				this.initialAlphaScale = this.radius;
-				if (this.radius < 1) {
-					this.initialAlphaScale = this.radius + 1;
-				}
-				//just storing the color portion seperately from the alpha portion
-				
-				if (this.id > 500) {
-					if (this.id < 600) {
-						//fill the main canvas with the color black 
-						c.fillStyle = "black";
-						//set it equal to dimensions provided earlier
-						c.fillRect(0, 0, canvas.width, canvas.height);
-						this.radius = 2;
-						this.red = Math.floor(Math.random() * 20 + 20 * (255 / this.id));
-						this.green = 100;
-						this.blue = 100;
-						this.rgbGen = "rgba("+ this.red + ", "+ this.green +", " + this.blue;
-					} else {
-						particleIndex = 0;
-						this.gravity -= .001;
-					}
-				} else {
-					this.red = 150;
-					this.green = Math.floor(Math.random() * 255 + 20 * (255 / this.id));
-					this.blue = 30;
-					this.rgbGen = "rgba("+ this.red + ", "+ this.green +", " + this.blue;
-				}
-
-				this.drawCircle = function(){
-
-					this.alpha = Math.sin(this.alphaRadians) / this.initialAlphaScale;
-						
-					
-					///
-
-					//mimicking acceleration by incrementing the position by a growing number each time 
-					this.x += (this.vx * .9);
-					this.y += (this.vy * 1.1);
-
-					//mimicks the effect of gravity on the velocity.
-					this.vy += this.gravity;
-					
-					//keep track of the current age of the particle
-					this.life++;
-
-					//create the particle and gives it the newly altered position properties
-					c.beginPath();
-					c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
-					c.fill();
-					
-					c.fillStyle = this.rgbGen  + ", "+ this.alpha +")";
-					
-					this.alphaRadians += (Math.PI / this.maxLife);	
-					
-					
-					//at a certain age, delete the particle in the particle array at the index provided via the id.
-					if (this.life > this.maxLife) {
-						delete particles[this.id];
-					}
-				
-					if (this.x < this.tunnelRadius + this.tunnelRadius / 2 + 50) {
-						if (this.x > canvas.width / 2) {
-							this.vx -= .03;
-						} else {
-							this.vx += .03;
-						}
-					} 
-				}
-			}
-
-			//create 10 new particles
-			function emit(){
-				for (i = 0; i < particleAmount; i++) {
-					new Particle;
-				}
-			}	
-
-			//alter particles values over time with a setInterval function
-			setInterval(function(){
-				// c.fillStyle = "black";
-				// c.fillRect(0, 0, canvas.width, canvas.height);
-				emit();
-				//calls the draw method on each particle for each frame. This is what creates the appearance of movement
-				for (var i in particles) {
-					particles[i].drawCircle();
-					
-				}
-
-			}, 2);		
-		};
 		
-
-
 	
-	</script>
+		<form class="slider-form">
+			<h1>Move the sliders for various effects.</h1>
+			<input type="range" name="value1" min="0" max="10">
+			<input type="range" name="value1" min="0" max="10">
+			<input type="range" name="value1" min="0" max="10">
+			<input type="range" name="value1" min="0" max="10">
+		</form>
+
+
+		<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
