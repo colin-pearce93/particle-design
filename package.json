@@ -1,7 +1,6 @@
 {
   "name": "particle-playground",
   "version": "0.0.0",
-  "private": true,
   "engines": {
     "node": "4.3.1"
   },
