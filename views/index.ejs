@@ -1,50 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title></title>
 
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+			
+		<script id="dataStuff" name="dataStuff" type="text/javascript" data-amount="<%= data.amount %>" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>" data-tunnel="<%= data.tunnel %>" data-vortex="<%= data.vortex %>">
 		
-	<script id="dataStuff" name="dataStuff" type="text/javascript" data-amount="<%= data.amount %>" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>" data-tunnel="<%= data.tunnel %>" data-vortex="<%= data.vortex %>">
+		</script>
+		
+		<script type="text/javascript" src="controller.js"></script>
 
-	var amount = document.getElementById("dataStuff").getAttribute("data-amount"),
-		gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
-		wind = document.getElementById("dataStuff").getAttribute("data-wind"),
-		yV = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
-		xV = document.getElementById("dataStuff").getAttribute("data-xVelocity"),
-		opacity = document.getElementById("dataStuff").getAttribute("data-opacity"),
-		radius = document.getElementById("dataStuff").getAttribute("data-size"),
-		time = document.getElementById("dataStuff").getAttribute("data-loopTime"),
-		red = document.getElementById("dataStuff").getAttribute("data-red"),
-		blue = document.getElementById("dataStuff").getAttribute("data-blue"),
-		green = document.getElementById("dataStuff").getAttribute("data-green"),
-		type = document.getElementById("dataStuff").getAttribute("data-particleType"),
-		tunnel = document.getElementById("dataStuff").getAttribute("data-tunnel"),
-		vortex = document.getElementById("dataStuff").getAttribute("data-vortex");
+	</head>
 
-
-		amount  = Number(amount);
-		gravity = Number(gravity);
-		wind 	= Number(wind);
-		yV      = Number(yV);
-		xV      = Number(xV);
-		opacity = Number(opacity);
-		radius  = Number(radius);
-		time    = Number(time);
-		red     = Number(red);
-		blue    = Number(green);
-		green   = Number(blue);
-		type    = Number(type);
-		tunnel  = Number(tunnel);
-		vortex  = Number(vortex);
-	
-	</script>
-	
-	<script type="text/javascript" src="controller.js"></script>
-
-</head>
-<body>
+	<body>
 
 		<form id="effects-rack" class="slider-form" action="/particle" method="post">
 			
@@ -114,20 +86,20 @@
 				
 				<h4>red value</h4>
 
-				<input type="range" value="<%= data.red %>" name="red" min="0" max="255">
+				<input type="range" value="<%= data.red %>" name="red" min="0" max="120">
 				
 				<h4>blue value</h4>
 
-				<input type="range"  value="<%= data.blue %>" name="blue" min="0" max="255">
+				<input type="range"  value="<%= data.blue %>" name="blue" min="0" max="120">
 				
 				<h4>green value</h4>
 
-				<input type="range"  value="<%= data.green %>" name="green" min="0" max="255">
+				<input type="range"  value="<%= data.green %>" name="green" min="0" max="120">
 
 			</div>
+
 		</form>
 
+	</body>
 
-		
-</body>
 </html>

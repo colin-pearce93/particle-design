@@ -1,16 +1,40 @@
 
+var amount = document.getElementById("dataStuff").getAttribute("data-amount"),
+		gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
+		wind = document.getElementById("dataStuff").getAttribute("data-wind"),
+		yV = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
+		xV = document.getElementById("dataStuff").getAttribute("data-xVelocity"),
+		opacity = document.getElementById("dataStuff").getAttribute("data-opacity"),
+		radius = document.getElementById("dataStuff").getAttribute("data-size"),
+		time = document.getElementById("dataStuff").getAttribute("data-loopTime"),
+		red = document.getElementById("dataStuff").getAttribute("data-red"),
+		blue = document.getElementById("dataStuff").getAttribute("data-blue"),
+		green = document.getElementById("dataStuff").getAttribute("data-green"),
+		type = document.getElementById("dataStuff").getAttribute("data-particleType"),
+		tunnel = document.getElementById("dataStuff").getAttribute("data-tunnel"),
+		vortex = document.getElementById("dataStuff").getAttribute("data-vortex");
 
 
-
+		amount  = Number(amount);
+		gravity = Number(gravity);
+		wind 	= Number(wind);
+		yV      = Number(yV);
+		xV      = Number(xV);
+		opacity = Number(opacity);
+		radius  = Number(radius);
+		time    = Number(time);
+		red     = Number(red);
+		blue    = Number(blue);
+		green   = Number(green);
+		type    = Number(type);
+		tunnel  = Number(tunnel);
+		vortex  = Number(vortex);
 
 window.onload = function(){
 	particleField(amount, gravity, wind, yV, xV, opacity, radius, time, red, blue, green, type, tunnel, vortex);
 }
 
-
-
-
-function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, b, type, tunnel, vortex){
+function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, g, type, tunnel, vortex){
 
 	console.log(arguments);
 
@@ -23,15 +47,15 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, 
 		size           = weight,       // 1 - 90
 		loopTime       = time,    // 1- 1200
 		red            = r,    // 0 - 355
-		blue           = g,    // 0 - 355
-		green          = b,     // 0 - 355
+		blue           = b,    // 0 - 355
+		green          = g,     // 0 - 355
 		dots           = type,		  // 0 - 1
 		tunnel         = tunnel,		  // 0 - 1
 		vortex         = vortex;     // 1- 5	
 
 		opacity = 1001 - opacity;
 		if (dots) {
-			particleAmount = 4;
+			particleAmount = 2;
 		}
 	
 	var canvas 		   = document.createElement("canvas"),
@@ -52,12 +76,12 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, 
 		this.radius  = (size * Math.random());
 		if (tunnel) {
 			if (vortex === 1) {
-				this.x = Math.random() * (canvas.width);
+				this.x = Math.random() * (canvas.width - 170) + 170;
 			} else {
-				this.x = Math.random() * canvas.width / vortex + (canvas.width / 2 - canvas.width / (vortex * 2));
+				this.x = Math.random() * (canvas.width / vortex - 170) + (canvas.width / 2 - canvas.width / (vortex * 2)) + 170;
 			}
 		} else {
-			this.x = Math.random() * (canvas.width);
+			this.x = Math.random() * (canvas.width - 170) + 170;
 		}
 		
 		this.y       = Math.random() * canvas.height;
@@ -91,9 +115,9 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, 
 			c.fillRect(0, 0, canvas.width, canvas.height);
 		}
 
-		this.red   = Math.floor(red * Math.random());
-		this.green = Math.floor(green * Math.random());
-		this.blue  = Math.floor(blue * Math.random());
+		this.red   = Math.floor(red * Math.random()) * (Math.floor(red * Math.random()) / 2);
+		this.green = Math.floor(green * Math.random()) * (Math.floor(green * Math.random()) / 2);
+		this.blue  = Math.floor(blue * Math.random()) * (Math.floor(blue * Math.random()) / 2);
 		this.rgb   = "rgba("+ this.red + ", "+ this.green +", " + this.blue;
 
 		this.drawCircle = function(){
@@ -129,9 +153,6 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, 
 					}
 				} 
 			}
-			
-			
-			//add a wind like effect somewhere here;
 		}
 
 	}
