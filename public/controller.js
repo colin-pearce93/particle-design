@@ -14,20 +14,20 @@ var amount  = document.getElementById("dataStuff").getAttribute("data-amount"),
     tunnel  = document.getElementById("dataStuff").getAttribute("data-tunnel"),
     vortex  = document.getElementById("dataStuff").getAttribute("data-vortex");
 	
-	amount  = Number(amount);
-	gravity = Number(gravity);
-	wind 	= Number(wind);
-	yV      = Number(yV);
-	xV      = Number(xV);
-	opacity = Number(opacity);
-	radius  = Number(radius);
-	time    = Number(time);
-	red     = Number(red);
-	blue    = Number(blue);
-	green   = Number(green);
-	type    = Number(type);
-	tunnel  = Number(tunnel);
-	vortex  = Number(vortex);
+    amount  = Number(amount);
+    gravity = Number(gravity);
+    wind    = Number(wind);
+    yV      = Number(yV);
+    xV      = Number(xV);
+    opacity = Number(opacity);
+    radius  = Number(radius);
+    time    = Number(time);
+    red     = Number(red);
+    blue    = Number(blue);
+    green   = Number(green);
+    type    = Number(type);
+    tunnel  = Number(tunnel);
+    vortex  = Number(vortex);
 
 window.onload = function(){
 	particleField(amount, gravity, wind, yV, xV, opacity, radius, time, red, blue, green, type, tunnel, vortex);
