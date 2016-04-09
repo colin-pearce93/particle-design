@@ -38,30 +38,31 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 	console.log(arguments);
 
     var particleAmount = quant,
-		grav           = force1,   // 1 - 1000
-		wind           = force2,   // 1 - 1000
-		yVelocity      = vY,       // 1 - 1000
-		xVelocity      = vX,       // 1 - 1000
-		opacity        = opac,     // 1 - 100
-		size           = weight,   // 1 - 90
-		loopTime       = time,     // 1- 1200
-		red            = r,        // 0 - 355
-		blue           = b,        // 0 - 355
-		green          = g,        // 0 - 355
-		dots           = type,	   // 0 - 1
-		tunnel         = tunnel,   // 0 - 1
-		vortex         = vortex;   // 1- 5	
+	grav           = force1,   // 1 - 1000
+	wind           = force2,   // 1 - 1000
+	yVelocity      = vY,       // 1 - 1000
+	xVelocity      = vX,       // 1 - 1000
+	opacity        = opac,     // 1 - 100
+	size           = weight,   // 1 - 90
+	loopTime       = time,     // 1- 1200
+	red            = r,        // 0 - 355
+	blue           = b,        // 0 - 355
+	green          = g,        // 0 - 355
+	dots           = type,	   // 0 - 1
+	tunnel         = tunnel,   // 0 - 1
+	vortex         = vortex;   // 1- 5	
 
-		vortex = 6 - vortex;
-		opacity = 1001 - opacity;
-		if (dots) {
-			particleAmount = 2;
-		}
-		if (size < 5) {
-			size = size / 1.5;
-		} else if (size < 10) {
-			size = size / 1.3;
-		}
+	vortex = 6 - vortex;
+	opacity = 1001 - opacity;
+
+	if (dots) {
+		particleAmount = 2;
+	}
+	if (size < 5) {
+		size = size / 1.5;
+	} else if (size < 10) {
+		size = size / 1.3;
+	}
 	
 	var canvas 		   = document.createElement("canvas"),
 		c	   		   = canvas.getContext("2d"),
@@ -122,8 +123,8 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 
 		this.drawCircle = function(){
 
-			this.alpha 	       = Math.sin(this.alphaRadians) / this.initialAlphaScale;
-			this.alphaRadians += (Math.PI / this.maxLife);
+			this.alpha 	           = Math.sin(this.alphaRadians) / this.initialAlphaScale;
+			this.alphaRadians         += (Math.PI / this.maxLife);
 			this.x 			  += (this.vx * .9);
 			this.y 			  += (this.vy * .9);
 			this.vy 		  += this.gravity;
