@@ -1,34 +1,33 @@
 
-var amount = document.getElementById("dataStuff").getAttribute("data-amount"),
-		gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
-		wind = document.getElementById("dataStuff").getAttribute("data-wind"),
-		yV = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
-		xV = document.getElementById("dataStuff").getAttribute("data-xVelocity"),
-		opacity = document.getElementById("dataStuff").getAttribute("data-opacity"),
-		radius = document.getElementById("dataStuff").getAttribute("data-size"),
-		time = document.getElementById("dataStuff").getAttribute("data-loopTime"),
-		red = document.getElementById("dataStuff").getAttribute("data-red"),
-		blue = document.getElementById("dataStuff").getAttribute("data-blue"),
-		green = document.getElementById("dataStuff").getAttribute("data-green"),
-		type = document.getElementById("dataStuff").getAttribute("data-particleType"),
-		tunnel = document.getElementById("dataStuff").getAttribute("data-tunnel"),
-		vortex = document.getElementById("dataStuff").getAttribute("data-vortex");
+var amount  = document.getElementById("dataStuff").getAttribute("data-amount"),
+	gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
+	wind    = document.getElementById("dataStuff").getAttribute("data-wind"),
+	yV      = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
+	xV      = document.getElementById("dataStuff").getAttribute("data-xVelocity"),
+	opacity = document.getElementById("dataStuff").getAttribute("data-opacity"),
+	radius  = document.getElementById("dataStuff").getAttribute("data-size"),
+	time    = document.getElementById("dataStuff").getAttribute("data-loopTime"),
+	red     = document.getElementById("dataStuff").getAttribute("data-red"),
+	blue    = document.getElementById("dataStuff").getAttribute("data-blue"),
+	green   = document.getElementById("dataStuff").getAttribute("data-green"),
+	type    = document.getElementById("dataStuff").getAttribute("data-particleType"),
+	tunnel  = document.getElementById("dataStuff").getAttribute("data-tunnel"),
+	vortex  = document.getElementById("dataStuff").getAttribute("data-vortex");
 
-
-		amount  = Number(amount);
-		gravity = Number(gravity);
-		wind 	= Number(wind);
-		yV      = Number(yV);
-		xV      = Number(xV);
-		opacity = Number(opacity);
-		radius  = Number(radius);
-		time    = Number(time);
-		red     = Number(red);
-		blue    = Number(blue);
-		green   = Number(green);
-		type    = Number(type);
-		tunnel  = Number(tunnel);
-		vortex  = Number(vortex);
+	amount  = Number(amount);
+	gravity = Number(gravity);
+	wind 	= Number(wind);
+	yV      = Number(yV);
+	xV      = Number(xV);
+	opacity = Number(opacity);
+	radius  = Number(radius);
+	time    = Number(time);
+	red     = Number(red);
+	blue    = Number(blue);
+	green   = Number(green);
+	type    = Number(type);
+	tunnel  = Number(tunnel);
+	vortex  = Number(vortex);
 
 window.onload = function(){
 	particleField(amount, gravity, wind, yV, xV, opacity, radius, time, red, blue, green, type, tunnel, vortex);
@@ -39,19 +38,19 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 	console.log(arguments);
 
     var particleAmount = quant,
-		grav           = force1,     // 1 - 1000
-		wind           = force2,      // 1 - 1000
-		yVelocity      = vY,     // 1 - 1000
-		xVelocity      = vX,     // 1 - 1000
+		grav           = force1,   // 1 - 1000
+		wind           = force2,   // 1 - 1000
+		yVelocity      = vY,       // 1 - 1000
+		xVelocity      = vX,       // 1 - 1000
 		opacity        = opac,     // 1 - 100
-		size           = weight,       // 1 - 90
-		loopTime       = time,    // 1- 1200
-		red            = r,    // 0 - 355
-		blue           = b,    // 0 - 355
-		green          = g,     // 0 - 355
-		dots           = type,		  // 0 - 1
-		tunnel         = tunnel,		  // 0 - 1
-		vortex         = vortex;     // 1- 5	
+		size           = weight,   // 1 - 90
+		loopTime       = time,     // 1- 1200
+		red            = r,        // 0 - 355
+		blue           = b,        // 0 - 355
+		green          = g,        // 0 - 355
+		dots           = type,	   // 0 - 1
+		tunnel         = tunnel,   // 0 - 1
+		vortex         = vortex;   // 1- 5	
 
 		vortex = 6 - vortex;
 		opacity = 1001 - opacity;
@@ -69,12 +68,10 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 		particleMem    = {},
 		particleIndex  = 0;
 
-	canvas.id 	   = "canvas-time";
-
 	document.body.appendChild(canvas);
 	canvas.width  = window.innerWidth;
 	canvas.height = window.innerHeight;
-	c.fillStyle = "black";
+	c.fillStyle   = "black";
 	c.fillRect(0, 0, canvas.width, canvas.height);
 
 	function Particle(){
@@ -113,9 +110,6 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 			this.radius += .02;
 		}
 		
-		//this sets the dividing constant for the alpha channel in rgba
-		//causes variation in opacity depending on the particle's height
-		
 		if (this.id % loopTime === 0) {
 			c.fillStyle = "black";
 			c.fillRect(0, 0, canvas.width, canvas.height);
@@ -132,7 +126,6 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 			this.alphaRadians += (Math.PI / this.maxLife);
 			this.x 			  += (this.vx * .9);
 			this.y 			  += (this.vy * .9);
-			//mimicks the effect of gravity on the velocity.
 			this.vy 		  += this.gravity;
 			this.vx 		  += this.wind;
 						
@@ -142,14 +135,14 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 			c.fillStyle = this.rgb  + ", "+ this.alpha +")";
 			
 			this.life++;
-
 			if (this.life > this.maxLife) {
 				delete particleMem[this.id];
-				delete particleMem[this.id - 1];
-				delete particleMem[this.id - 2];
-				delete particleMem[this.id - 3];
-				delete particleMem[this.id - 4];
+				delete particleMem[this.id + 1];
+				delete particleMem[this.id + 2];
+				delete particleMem[this.id + 3];
+				delete particleMem[this.id + 4];
 			}
+
 			if (tunnel) {
 				if (this.x < canvas.width + canvas.width / 2 + 50) {
 					if (this.x > canvas.width / 2) {
@@ -181,5 +174,5 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 		for (var i in particleMem) {
 			particleMem[i].drawCircle();
 		}
-	}, 2);
+	}, 6);
 }

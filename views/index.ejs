@@ -39,10 +39,15 @@
 				</select>
 				<% } %>
 	
+
+				<% if (data.tunnel) { %>
 				<h4 id="vortex-size">vortex size</h4>
 				<input type="range" value="<%= data.vortex %>" name="vortex" min="1" max="5">
 
+				<% } %>
 				
+
+
 				<% if (data.particleType) { %>
 				<select value="<%= data.particleType %>" name="particleType">
 					<option value="1">dots</option>
@@ -57,6 +62,8 @@
 				<% } %>
 				
 
+
+
 				<h4 id="top-label">gravity</h4>
 
 				<input type="range" value="<%= data.gravity %>" name="gravity" min="1" max="1000">
@@ -64,7 +71,8 @@
 				<h4>wind</h4>
 
 				<input type="range" value="<%= data.wind %>" name="wind" min="0" max="1000">
-				
+		
+
 				<h4>y-velocity</h4>
 
 				<input type="range" value="<%= data.yVelocity %>" name="yVelocity" min="0" max="1000">
@@ -72,18 +80,23 @@
 				<h4>x-velocity</h4>
 
 				<input type="range" value="<%= data.xVelocity %>" name="xVelocity" min="0" max="1000">
-				
+			
+
 				<h4>opacity</h4>
 
 				<input type="range" value="<%= data.opacity %>" name="opacity" min="1" max="1000">
-				
+			
+
 				<h4>size</h4>
 
 				<input type="range" value="<%= data.size %>" name="radius" min="1" max="90">
-				
+			
+
 				<h4>loop time</h4>
 
 				<input type="range" value="<%= data.loopTime %>" name="loopTime" min="1" max="1200">
+			
+
 				
 				<h4>red value</h4>
 
