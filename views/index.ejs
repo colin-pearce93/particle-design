@@ -6,10 +6,9 @@
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 		
-	<script id="dataStuff" name="dataStuff" type="text/javascript" data-amount="<%= data.amount %>" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>">
+	<script id="dataStuff" name="dataStuff" type="text/javascript" data-amount="<%= data.amount %>" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>" data-tunnel="<%= data.tunnel %>">
 
-	var 
-		amount = document.getElementById("dataStuff").getAttribute("data-amount"),
+	var amount = document.getElementById("dataStuff").getAttribute("data-amount"),
 		gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
 		wind = document.getElementById("dataStuff").getAttribute("data-wind"),
 		yV = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
@@ -21,6 +20,7 @@
 		blue = document.getElementById("dataStuff").getAttribute("data-blue"),
 		green = document.getElementById("dataStuff").getAttribute("data-green"),
 		type = document.getElementById("dataStuff").getAttribute("data-particleType");
+		tunnel = document.getElementById("dataStuff").getAttribute("data-tunnel");
 
 
 		amount  = Number(amount);
@@ -35,10 +35,11 @@
 		blue    = Number(green);
 		green   = Number(blue);
 		type    = Number(type);
+		tunnel  = Number(tunnel);
 	
 	</script>
 	
-	<script type="text/javascript" src="controller.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 
 </head>
 <body>
@@ -50,55 +51,58 @@
 				<h1>Particle Playground</h1>
 				
 				<button type="submit" value="submit" class="btn btn-primary">render new pattern</button>
+	
+				<select value="<%= data.tunnel %>" name="tunnel">
+					<option value="1">vortex</option>
+					<option value="0">normal</option>
+				</select>
+
+				<input type="range" value="<%= data.vortex %>" name="vortex" min="1" max="100">
 
 				<select value="<%= data.particleType %>" name="particleType">
 					<option value="1">dots</option>
 					<option value="0">streaks</option>
 				</select>
 
-				<h4 id="top-label">particle density</h4>
-
-				<input type="range" ng-model="data1" value=3 name="amount" min="1" max="4">
-				
 				<h4>gravity</h4>
 
-				<input type="range" ng-model="data2" value="<%= data.gravity %>" name="gravity" min="0" max="100">
+				<input type="range" value="<%= data.gravity %>" name="gravity" min="1" max="1000">
 				
 				<h4>wind</h4>
 
-				<input type="range" ng-model="data3" value="<%= data.wind %>" name="wind" min="0" max="100">
+				<input type="range" value="<%= data.wind %>" name="wind" min="1" max="1000">
 				
 				<h4>y-velocity</h4>
 
-				<input type="range" ng-model="data4" value="<%= data.yVelocity %>" name="yVelocity" min="0" max="100">
+				<input type="range" value="<%= data.yVelocity %>" name="yVelocity" min="1" max="1000">
 				
 				<h4>x-velocity</h4>
 
-				<input type="range" ng-model="data5" value="<%= data.xVelocity %>" name="xVelocity" min="0" max="10">
+				<input type="range" value="<%= data.xVelocity %>" name="xVelocity" min="1" max="1000">
 				
 				<h4>opacity</h4>
 
-				<input type="range" ng-model="data6" value="<%= data.opacity %>" name="opacity" min="0" max="100">
+				<input type="range" value="<%= data.opacity %>" name="opacity" min="1" max="100">
 				
 				<h4>size</h4>
 
-				<input type="range" ng-model="data7" value="<%= data.size %>" name="radius" min="1" max="50">
+				<input type="range" value="<%= data.size %>" name="radius" min="1" max="90">
 				
 				<h4>loop time</h4>
 
-				<input type="range" ng-model="data8" value="<%= data.loopTime %>" name="loopTime" min="10" max="3000">
+				<input type="range" value="<%= data.loopTime %>" name="loopTime" min="1" max="1200">
 				
 				<h4>red value</h4>
 
-				<input type="range" ng-model="data9" value="<%= data.red %>" name="red" min="0" max="255">
+				<input type="range" value="<%= data.red %>" name="red" min="0" max="355">
 				
 				<h4>blue value</h4>
 
-				<input type="range" ng-model="data10" value="<%= data.blue %>" name="blue" min="0" max="255">
+				<input type="range"  value="<%= data.blue %>" name="blue" min="0" max="355">
 				
 				<h4>green value</h4>
 
-				<input type="range" ng-model="data11" value="<%= data.green %>" name="green" min="0" max="255">
+				<input type="range"  value="<%= data.green %>" name="green" min="0" max="355">
 
 			</div>
 		</form>

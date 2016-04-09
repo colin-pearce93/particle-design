@@ -19,7 +19,8 @@ router.get('/', function(req, res, next) {
 			red: 100,
 			blue: 140,
 			green: 230,
-			particleType: false
+			particleType: false,
+			tunnel: false
 		},
 		reset: true  
 	});
@@ -31,7 +32,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/particle', function(req, res, next) {
 		
-	var amount = Number(req.body.amount),
+	var amount = 1,
 		gravity = Number(req.body.gravity),
 		wind = Number(req.body.wind),
 		yVelocity = Number(req.body.yVelocity),
@@ -42,7 +43,9 @@ router.post('/particle', function(req, res, next) {
 		red = Number(req.body.red),
 		blue = Number(req.body.blue),
 		green = Number(req.body.green),
-		particleType = Number(req.body.particleType);
+		particleType = Number(req.body.particleType),
+		tunnel = Number(req.body.tunnel),
+		vortex = Number(req.body.vortex);
 
 	res.render('index.ejs', { 
 		title: "test",
@@ -58,7 +61,9 @@ router.post('/particle', function(req, res, next) {
 			red: red,
 			blue: blue,
 			green: green,
-			particleType: particleType
+			particleType: particleType,
+			tunnel: tunnel,
+			vortex
 		},
 		reset: false 
 	});

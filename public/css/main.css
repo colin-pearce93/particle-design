@@ -16,6 +16,7 @@ canvas {
 }
 
 .slider-form {
+  display: none;
 	position: absolute;
 	width: 170px;
 	height: 100%;
