@@ -6,7 +6,7 @@
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 		
-	<script id="dataStuff" name="dataStuff" type="text/javascript" data-amount="<%= data.amount %>" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>" data-tunnel="<%= data.tunnel %>">
+	<script id="dataStuff" name="dataStuff" type="text/javascript" data-amount="<%= data.amount %>" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>" data-tunnel="<%= data.tunnel %>" data-vortex="<%= data.vortex %>">
 
 	var amount = document.getElementById("dataStuff").getAttribute("data-amount"),
 		gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
@@ -19,8 +19,9 @@
 		red = document.getElementById("dataStuff").getAttribute("data-red"),
 		blue = document.getElementById("dataStuff").getAttribute("data-blue"),
 		green = document.getElementById("dataStuff").getAttribute("data-green"),
-		type = document.getElementById("dataStuff").getAttribute("data-particleType");
-		tunnel = document.getElementById("dataStuff").getAttribute("data-tunnel");
+		type = document.getElementById("dataStuff").getAttribute("data-particleType"),
+		tunnel = document.getElementById("dataStuff").getAttribute("data-tunnel"),
+		vortex = document.getElementById("dataStuff").getAttribute("data-vortex");
 
 
 		amount  = Number(amount);
@@ -36,10 +37,11 @@
 		green   = Number(blue);
 		type    = Number(type);
 		tunnel  = Number(tunnel);
+		vortex  = Number(vortex);
 	
 	</script>
 	
-	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
 
 </head>
 <body>
@@ -52,17 +54,35 @@
 				
 				<button type="submit" value="submit" class="btn btn-primary">render new pattern</button>
 	
+				<% if (data.tunnel) { %>
 				<select value="<%= data.tunnel %>" name="tunnel">
 					<option value="1">vortex</option>
 					<option value="0">normal</option>
 				</select>
+				
+				<% } else { %>
+				<select value="<%= !data.tunnel %>" name="tunnel">
+					<option value="0">normal</option>
+					<option value="1">vortex</option>
+				</select>
+				<% } %>
 
-				<input type="range" value="<%= data.vortex %>" name="vortex" min="1" max="100">
+				<input type="range" value="<%= data.vortex %>" name="vortex" min="1" max="5">
 
+				
+				<% if (data.particleType) { %>
 				<select value="<%= data.particleType %>" name="particleType">
 					<option value="1">dots</option>
 					<option value="0">streaks</option>
 				</select>
+				
+				<% } else { %>
+				<select value="<%= !data.particleType %>" name="particleType">
+					<option value="0">streaks</option>
+					<option value="1">dots</option>
+				</select>
+				<% } %>
+				
 
 				<h4>gravity</h4>
 
@@ -70,19 +90,19 @@
 				
 				<h4>wind</h4>
 
-				<input type="range" value="<%= data.wind %>" name="wind" min="1" max="1000">
+				<input type="range" value="<%= data.wind %>" name="wind" min="0" max="1000">
 				
 				<h4>y-velocity</h4>
 
-				<input type="range" value="<%= data.yVelocity %>" name="yVelocity" min="1" max="1000">
+				<input type="range" value="<%= data.yVelocity %>" name="yVelocity" min="0" max="1000">
 				
 				<h4>x-velocity</h4>
 
-				<input type="range" value="<%= data.xVelocity %>" name="xVelocity" min="1" max="1000">
+				<input type="range" value="<%= data.xVelocity %>" name="xVelocity" min="0" max="1000">
 				
 				<h4>opacity</h4>
 
-				<input type="range" value="<%= data.opacity %>" name="opacity" min="1" max="100">
+				<input type="range" value="<%= data.opacity %>" name="opacity" min="1" max="1000">
 				
 				<h4>size</h4>
 
@@ -94,15 +114,15 @@
 				
 				<h4>red value</h4>
 
-				<input type="range" value="<%= data.red %>" name="red" min="0" max="355">
+				<input type="range" value="<%= data.red %>" name="red" min="0" max="255">
 				
 				<h4>blue value</h4>
 
-				<input type="range"  value="<%= data.blue %>" name="blue" min="0" max="355">
+				<input type="range"  value="<%= data.blue %>" name="blue" min="0" max="255">
 				
 				<h4>green value</h4>
 
-				<input type="range"  value="<%= data.green %>" name="green" min="0" max="355">
+				<input type="range"  value="<%= data.green %>" name="green" min="0" max="255">
 
 			</div>
 		</form>

@@ -24,7 +24,7 @@ function particleField(){
 		green          = 160,     // 0 - 355
 		dots           = 0,		  // 0 - 1
 		tunnel         = 1,		  // 0 - 1
-		cWidth         = 80;     // 1- 100
+		vortex         = 1;     // 1- 5
 
 		red   -= 100;
 		blue  -= 100;

@@ -8,19 +8,20 @@ router.get('/', function(req, res, next) {
   res.render('index.ejs', { 
   		title: "Express",
 		data: {
-			amount: 2,
-			gravity: 1,
+			amount: 1,
+			gravity: 0,
 			wind: 4,
-			yVelocity: 1.0003,
-			xVelocity: -1.0001,
-			opacity: 2,
+			yVelocity: 6,
+			xVelocity: 6,
+			opacity: 950,
 			size: 4,
-			loopTime: 900,
-			red: 100,
-			blue: 140,
-			green: 230,
-			particleType: false,
-			tunnel: false
+			loopTime: 600,
+			red: 255,
+			blue: 255,
+			green: 255,
+			particleType: 1,
+			tunnel: 1,
+			vortex: 1
 		},
 		reset: true  
 	});
@@ -63,7 +64,7 @@ router.post('/particle', function(req, res, next) {
 			green: green,
 			particleType: particleType,
 			tunnel: tunnel,
-			vortex
+			vortex: vortex
 		},
 		reset: false 
 	});
