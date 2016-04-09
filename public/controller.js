@@ -1,19 +1,19 @@
 
 var amount  = document.getElementById("dataStuff").getAttribute("data-amount"),
-	gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
-	wind    = document.getElementById("dataStuff").getAttribute("data-wind"),
-	yV      = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
-	xV      = document.getElementById("dataStuff").getAttribute("data-xVelocity"),
-	opacity = document.getElementById("dataStuff").getAttribute("data-opacity"),
-	radius  = document.getElementById("dataStuff").getAttribute("data-size"),
-	time    = document.getElementById("dataStuff").getAttribute("data-loopTime"),
-	red     = document.getElementById("dataStuff").getAttribute("data-red"),
-	blue    = document.getElementById("dataStuff").getAttribute("data-blue"),
-	green   = document.getElementById("dataStuff").getAttribute("data-green"),
-	type    = document.getElementById("dataStuff").getAttribute("data-particleType"),
-	tunnel  = document.getElementById("dataStuff").getAttribute("data-tunnel"),
-	vortex  = document.getElementById("dataStuff").getAttribute("data-vortex");
-
+    gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
+    wind    = document.getElementById("dataStuff").getAttribute("data-wind"),
+    yV      = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
+    xV      = document.getElementById("dataStuff").getAttribute("data-xVelocity"),
+    opacity = document.getElementById("dataStuff").getAttribute("data-opacity"),
+    radius  = document.getElementById("dataStuff").getAttribute("data-size"),
+    time    = document.getElementById("dataStuff").getAttribute("data-loopTime"),
+    red     = document.getElementById("dataStuff").getAttribute("data-red"),
+    blue    = document.getElementById("dataStuff").getAttribute("data-blue"),
+    green   = document.getElementById("dataStuff").getAttribute("data-green"),
+    type    = document.getElementById("dataStuff").getAttribute("data-particleType"),
+    tunnel  = document.getElementById("dataStuff").getAttribute("data-tunnel"),
+    vortex  = document.getElementById("dataStuff").getAttribute("data-vortex");
+	
 	amount  = Number(amount);
 	gravity = Number(gravity);
 	wind 	= Number(wind);
