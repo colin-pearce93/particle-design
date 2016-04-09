@@ -17,7 +17,8 @@
     "express": "~4.13.1",
     "http": "0.0.0",
     "jade": "~1.11.0",
-    "morgan": "~1.6.1"
+    "morgan": "~1.6.1",
+    "serve-favicon": "^2.3.0"
   },
   "description": "My attempt at messing around with a basic particle field that I built.",
   "devDependencies": {},
