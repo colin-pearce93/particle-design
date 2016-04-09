@@ -8,36 +8,41 @@ router.get('/', function(req, res, next) {
   res.render('index.ejs', { 
   		title: "Express",
 		data: {
-			amount: false,
-			gravity: false,
-			wind: false,
-			yVelocity: false,
-			xVelocity: false,
-			opacity: false,
-			size: false,
-			loopTime: false,
-			red: false,
-			blue: false,
-			green: false,
+			amount: 2,
+			gravity: 1,
+			wind: 4,
+			yVelocity: 1.0003,
+			xVelocity: -1.0001,
+			opacity: 2,
+			size: 4,
+			loopTime: 900,
+			red: 100,
+			blue: 140,
+			green: 230,
 			particleType: false
 		},
 		reset: true  
 	});
 });
+
+
+///NEED TO req.bodies CONVERT TO NUMBERS
+
+
 router.post('/particle', function(req, res, next) {
 		
-	var amount = req.body.amount,
-		gravity = req.body.gravity,
-		wind = req.body.wind,
-		yVelocity = req.body.yVelocity,
-		xVelocity = req.body.xVelocity,
-		opacity = req.body.opacity,
-		size = req.body.size,
-		loopTime = req.body.loopTime,
-		red = req.body.red,
-		blue = req.body.blue,
-		green = req.body.green,
-		particleType = req.body.particleType;
+	var amount = Number(req.body.amount),
+		gravity = Number(req.body.gravity),
+		wind = Number(req.body.wind),
+		yVelocity = Number(req.body.yVelocity),
+		xVelocity = Number(req.body.xVelocity),
+		opacity = Number(req.body.opacity),
+		size = Number(req.body.radius),
+		loopTime = Number(req.body.loopTime),
+		red = Number(req.body.red),
+		blue = Number(req.body.blue),
+		green = Number(req.body.green),
+		particleType = Number(req.body.particleType);
 
 	res.render('index.ejs', { 
 		title: "test",
@@ -57,6 +62,10 @@ router.post('/particle', function(req, res, next) {
 		},
 		reset: false 
 	});
+});
+
+router.get('/particle', function(req, res, next) {
+	res.redirect('/');
 });
 
 module.exports = router;

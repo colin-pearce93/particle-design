@@ -1,186 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="JS-Garden">
 <head>
 	<meta charset="utf-8" />
 	<title></title>
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	
-
+	
+	
 	<script id="dataStuff" name="dataStuff" type="text/javascript" data-amount="<%= data.amount %>" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>">
 
-	
-		var	data1      = document.getElementById('dataStuff').getAttribute("data-amount") || true,
-			data2     = document.getElementById('dataStuff').getAttribute("data-gravity"),
-			data3        = document.getElementById('dataStuff').getAttribute("data-wind"),
-			data4   = document.getElementById('dataStuff').getAttribute("data-yVelocity"),
-			data5   = document.getElementById('dataStuff').getAttribute("data-xVelocity"),
-			data6     = document.getElementById('dataStuff').getAttribute("data-opacity"),
-			data7        = document.getElementById('dataStuff').getAttribute("data-size"),
-			data8    = document.getElementById('dataStuff').getAttribute("data-loopTime"),
-			data9         = document.getElementById('dataStuff').getAttribute("data-red"),
-			data10        = document.getElementById('dataStuff').getAttribute("data-blue"),
-			data11       = document.getElementById('dataStuff').getAttribute("data-green"),
-			data12 = document.getElementById('dataStuff').getAttribute("data-particleType");
+	var amount = document.getElementById("dataStuff").getAttribute("data-amount"),
+		gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
+		wind = document.getElementById("dataStuff").getAttribute("data-wind"),
+		yV = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
+		xV = document.getElementById("dataStuff").getAttribute("data-xVelocity"),
+		opacity = document.getElementById("dataStuff").getAttribute("data-opacity"),
+		radius = document.getElementById("dataStuff").getAttribute("data-size"),
+		time = document.getElementById("dataStuff").getAttribute("data-loopTime"),
+		red = document.getElementById("dataStuff").getAttribute("data-red"),
+		blue = document.getElementById("dataStuff").getAttribute("data-blue"),
+		green = document.getElementById("dataStuff").getAttribute("data-green"),
+		type = document.getElementById("dataStuff").getAttribute("data-particleType");
+		
 
-		document.addEventListener('DOMContentLoaded', function(){
-			particleField();
-		}, true); 
 
-		function particleField(){
 
-			    particleAmount = false || 2;
-				grav           = false || .1;	// need to find a range for these values that would make them appropriate
-				wind           = false || .1;
-				yVelocity      = false || 1; // 0 - 1
-				xVelocity      = false || .02; // 0 - 1
-				opacity        = false || 90;
-				size           = false || 6; //1 - 50
-				loopTime       = false || 900;
-				red            = false || 230; // 0 - 255
-				blue           = false  || 230; // 0 - 255
-				green          = false  || 230; // 0 - 255
-				dots           = true  || false;
+		// document.addEventListener("DOMContentLoaded", function(event) { 
+		//   particleField();
+		// });
+
+		// function particleField(){
+
+		// 	    particleAmount = 1;
+		// 		grav           = 1;	// need to find a range for these values that would make them appropriate
+		// 		wind           = 4;
+		// 		yVelocity      = 1.0003; // 0 - 1
+		// 		xVelocity      = -1.0001; // 0 - 1
+		// 		opacity        = 2;
+		// 		size           = 4; //1 - 50
+		// 		loopTime       = 81900;
+		// 		red            = -100; // 0 - 255
+		// 		blue           = 140; // 0 - 255
+		// 		green          = 230; // 0 - 255
+		// 		dots           = false;
 			
-			// var particleAmount = data1 || 2,
-			// 	grav           = data2 || .1,	// need to find a range for these values that would make them appropriate
-			// 	wind           = data3 || .1,
-			// 	yVelocity      = data4 || 1, // 0 - 1
-			// 	xVelocity      = data5 || .02, // 0 - 1
-			// 	opacity        = data6 || 90,
-			// 	size           = data7 || 6, //1 - 50
-			// 	loopTime       = data8 || 900,
-			// 	red            = data9 || 230, // 0 - 255
-			// 	blue           = data10 || 230, // 0 - 255
-			// 	green          = data11 || 230, // 0 - 255
-			// 	dots           = data12 || false;
+			
 
+		// 	var canvas 		   = document.createElement("canvas"),
+		// 		c	   		   = canvas.getContext("2d"),
+		// 		particleMem    = {},
+		// 		particleIndex  = 0;
 
-			var canvas 		   = document.createElement("canvas"),
-				c	   		   = canvas.getContext("2d"),
-				particleMem    = {},
-				particleIndex  = 0;
+		// 	document.body.appendChild(canvas);
+		// 	canvas.width  = window.innerWidth;
+		// 	canvas.height = window.innerHeight;
+		// 	c.fillStyle = "black";
+		// 	c.fillRect(0, 0, canvas.width, canvas.height);
 
-			document.body.appendChild(canvas);
-			canvas.width  = window.innerWidth;
-			canvas.height = window.innerHeight;
-			c.fillStyle = "black";
-			c.fillRect(0, 0, canvas.width, canvas.height);
-
-			function Particle(){
+		// 	function Particle(){
 				
-				this.radius  = 1 * (size * Math.random());
-				this.x       = Math.random() * canvas.width;
-				this.y       = Math.random() * canvas.height;
-				this.vy      = 1;
-				this.vx      = 1;
-				this.gravity = -.02 * grav;
-				this.wind    = -.02 * wind;
-
-				this.alphaRadians = Math.PI;
-				this.alpha        = 0;
-
-				this.life    = 0;
-				this.maxLife = 230;
-				
-				particleMem[particleIndex] = this;
-				particleIndex++;
-				this.id = particleIndex;
-				
-				//this sets the dividing constant for the alpha channel in rgba
-				//causes variation in opacity depending on the particle's height
-				this.alphaScale = 1 / opacity * this.radius;
+		// 		this.radius  = 1 * (size * Math.random());
+		// 		this.x       = Math.random() * canvas.width / 2 + canvas.width / 8;
+		// 		this.y       = Math.random() * canvas.height;
+		// 		this.vy      = yVelocity;
+		// 		this.vx      = xVelocity;
+		// 		this.gravity = .00000005 * grav;
 				
 
-				if (this.id % loopTime === 0) {
-					c.fillStyle = "black";
-					c.fillRect(0, 0, canvas.width, canvas.height);
-				}
-				// if (type1) {
+		// 		this.alphaRadians = Math.PI;
+		// 		this.alpha        = 0;
 
-				// } else if (type2) {
+		// 		this.life    = 0;
+		// 		this.maxLife = 290;
+				
+		// 		particleMem[particleIndex] = this;
+		// 		particleIndex++;
+		// 		this.id = particleIndex;
+				
+		// 		//this sets the dividing constant for the alpha channel in rgba
+		// 		//causes variation in opacity depending on the particle's height
+		// 		this.alphaScale = opacity / this.radius;
+				
 
-				// } else if (type3) {
+		// 		if (this.id % loopTime === 0) {
+		// 			c.fillStyle = "black";
+		// 			c.fillRect(0, 0, canvas.width, canvas.height);
+		// 		}
+		// 		// if (type1) {
 
-				// }				
+		// 		// } else if (type2) {
 
-				this.red   = 255 - Math.floor(Math.random() * 2 * blue) - Math.floor(Math.random() * 2 * green);
-				this.green = 255 - Math.floor(Math.random() * 2 * blue) - Math.floor(Math.random() * 2 * red);
-				this.blue  = 255 - Math.floor(Math.random() * 2 * green) - Math.floor(Math.random() * 2 * red);
-				this.rgb   = "rgba("+ this.red + ", "+ this.green +", " + this.blue;
+		// 		// } else if (type3) {
 
-				this.drawCircle = function(){
+		// 		// }				
 
-					this.alpha 	       = Math.sin(this.alphaRadians) / this.alphaScale;
-					this.alphaRadians += (Math.PI / this.maxLife);
-					this.x  += (xVelocity * (this.vx));
-					this.y  -= (yVelocity * (this.vy));
-					this.vy += this.gravity;
-					this.vx += this.wind;
+		// 		this.red   = 255 - Math.floor(Math.random() * 2 * blue) - Math.floor(Math.random() * 2 * green);
+		// 		this.green = 255 - Math.floor(Math.random() * 2 * blue) - Math.floor(Math.random() * 2 * red);
+		// 		this.blue  = 255 - Math.floor(Math.random() * 2 * green) - Math.floor(Math.random() * 2 * red);
+		// 		this.rgb   = "rgba("+ this.red + ", "+ this.green +", " + this.blue;
+
+		// 		this.drawCircle = function(){
+
+		// 			this.alpha 	       = Math.sin(this.alphaRadians) / this.alphaScale;
+		// 			this.alphaRadians += (Math.PI / this.maxLife);
+		// 			this.x  *= (this.vx);
+		// 			this.y  *= (this.vy);
+		// 			this.vx += this.gravity;
+		// 			this.vy -= this.gravity;
 					
-					c.beginPath();
-					c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
-					c.fill();
-					c.fillStyle = this.rgb  + ", "+ this.alpha +")";
+		// 			if (this.x < canvas.width / 2 + canvas.width / 4) {
+		// 				if (this.x < canvas.width / 2) {
+		// 					this.gravity += -.00000001;
+								
+		// 				} else if (this.x < canvas.width / 4) {
+		// 					this.gravity += -.00000007;
+		// 				} else {
+		// 					this.gravity -= -.00000007;
+		// 				}
+		// 			} 
 					
-					this.life++;
-
-					if (this.life > this.maxLife) {
-						delete particleMem[this.id];
-					}
 					
-					//add a wind like effect somewhere here;
-				}
+		// 			c.beginPath();
+		// 			c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
+		// 			c.fill();
+		// 			c.fillStyle = this.rgb  + ", "+ this.alpha +")";
+					
+		// 			this.life++;
 
-			}
+		// 			if (this.life > this.maxLife) {
+		// 				delete particleMem[this.id];
+		// 			}
+					
+		// 			//add a wind like effect somewhere here;
+		// 		}
 
-			function emit(){
-				for(i = 0; i < particleAmount; i++) {
-					new Particle;
-				}
-			}
+		// 	}
 
-			setInterval(function(){
-				if (dots) {
-					c.fillStyle = "black";
-					c.fillRect(0, 0, canvas.width, canvas.height);
-				}
-				emit();
-				for (var i in particleMem) {
-					particleMem[i].drawCircle();
-				}
-			}, 1);
-		}
+		// 	function emit(){
+		// 		for(i = 0; i < particleAmount; i++) {
+		// 			new Particle;
+		// 		}
+		// 	}
+			
+		// 	setInterval(function(){
+		// 		if (dots) {
+		// 			c.fillStyle = "black";
+		// 			c.fillRect(0, 0, canvas.width, canvas.height);
+		// 		}
+		// 		emit();
+		// 		for (var i in particleMem) {
+		// 			particleMem[i].drawCircle();
+		// 		}
+		// 	}, 1);
+
+		// }
+
+
 
 		
 	 </script>
 
 	 
 	
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+	
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
 
 </head>
-<body>
+<body ng-controller="Particle">
 
-		
-	
 		<form id="effects-rack" class="slider-form" action="/particle" method="post">
-			<h1><%= title %></h1>
-			<input type="range" name="amount" min="1" max="4">
-			<input type="range" name="gravity" min="0" max="100">
-			<input type="range" name="wind" min="0" max="100">
-			<input type="range" name="yVelocity" min="0" max="100">
-			<input type="range" name="xVelocity" min="0" max="10">
-			<input type="range" name="opacity" min="0" max="100">
-			<input type="range" name="size" min="1" max="50">
-			<input type="range" name="loopTime" min="10" max="3000">
-			<input type="range" name="red" min="0" max="255">
-			<input type="range" name="blue" min="0" max="255">
-			<input type="range" name="green" min="0" max="255">
-			<select name="particleType">
-				<option value="true">dots</option>
-				<option value="false">streaks</option>
-			</select>
-			<button onclick="particle()" style="width: 200px;"></button>
+			
+			<div class="wrapper">
+
+				<h1>Particle Playground</h1>
+				
+				<button type="submit" value="submit" class="btn btn-primary">render new pattern</button>
+
+				<select value="<%= data.particleType %>" name="particleType">
+					<option value="1">dots</option>
+					<option value="0">streaks</option>
+				</select>
+
+				<h4 id="top-label">particle density</h4>
+
+				<input type="range" ng-model="data1" value=3 name="amount" min="1" max="4">
+				
+				<h4>gravity</h4>
+
+				<input type="range" ng-model="data2" value="<%= data.gravity %>" name="gravity" min="0" max="100">
+				
+				<h4>wind</h4>
+
+				<input type="range" ng-model="data3" value="<%= data.wind %>" name="wind" min="0" max="100">
+				
+				<h4>y-velocity</h4>
+
+				<input type="range" ng-model="data4" value="<%= data.yVelocity %>" name="yVelocity" min="0" max="100">
+				
+				<h4>x-velocity</h4>
+
+				<input type="range" ng-model="data5" value="<%= data.xVelocity %>" name="xVelocity" min="0" max="10">
+				
+				<h4>opacity</h4>
+
+				<input type="range" ng-model="data6" value="<%= data.opacity %>" name="opacity" min="0" max="100">
+				
+				<h4>size</h4>
+
+				<input type="range" ng-model="data7" value="<%= data.size %>" name="radius" min="1" max="50">
+				
+				<h4>loop time</h4>
+
+				<input type="range" ng-model="data8" value="<%= data.loopTime %>" name="loopTime" min="10" max="3000">
+				
+				<h4>red value</h4>
+
+				<input type="range" ng-model="data9" value="<%= data.red %>" name="red" min="0" max="255">
+				
+				<h4>blue value</h4>
+
+				<input type="range" ng-model="data10" value="<%= data.blue %>" name="blue" min="0" max="255">
+				
+				<h4>green value</h4>
+
+				<input type="range" ng-model="data11" value="<%= data.green %>" name="green" min="0" max="255">
+
+			</div>
 		</form>
 
 

@@ -17,25 +17,88 @@ canvas {
 
 .slider-form {
 	position: absolute;
-	width: 250px;
+	width: 170px;
 	height: 100%;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin: 0;
 	background-color: hsla(120,100%,100%,0.4);
 	border-radius: 0px 0px 2px 0px;
 }
-.slider-form h1 {
-	width: 210px;
-	margin: 20.8px 0px 0px 20px;
+.wrapper {
+  display: block;
+  position: absolute;
+  margin: 0;
+  margin-left: 0px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 30px;
+  width: 80%;
+  height: 85%;
+  background-color: hsla(120,100%,100%,0.7);
+  
+}
+.wrapper > * {
+  position: relative;
+}
+
+.wrapper h1 {
+	width: 100%;
+  margin-bottom: -25px;
 	font-size: 15px;
 	font-family: arial;
 	color: rgb(240, 255, 240);
+
+
+}
+.wrapper h4 {
+  width: 100%;
+  font-size: 12px;
+  margin-top: 34px;
+  font-family: arial;
+  text-align: center;
+  color: rgb(240, 255, 240);
+  
+  z-index: 0;
+}
+#top-label {
+  margin-top: 9px;
+}
+
+.wrapper select {
+  margin: 0;
+  margin-top: 20px;
+  width: 100%;
+}
+.wrapper button {
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+  margin-left: -7px;
+  width: 169px;
+  height: 45px;
+  border-width: 0px;
+  border-radius: none;
+  background-color: rgb(140, 130, 255);
+  text-decoration: underline;
+  transition: background-color 1s;
+  -webkit-transition: background-color 1s;
+}
+button:hover {
+  background-color: rgb(90, 90, 160);
+  cursor: pointer;
 }
 
 input[type=range] {
-	position: relative;
+
   -webkit-appearance: none;
-  width: 200px;
-  margin: 45.8px 0px 0px 20px;
+  width: 100%;
   float: left;
+  margin-top: 8px;
+  
+  z-index: 5;
 }
 input[type=range]:focus {
   outline: none;
@@ -59,6 +122,8 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -4.8px;
+
+  
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #cee1f1;
