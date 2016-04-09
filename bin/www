@@ -7,7 +7,7 @@
 var app     = require('../app');
 var cluster = require('cluster');
 var debug   = require('debug')('particles:server');
-var https    = require('https');
+var http    = require('http');
 
 /**
  * Get port from environment and store in Express.
@@ -32,7 +32,7 @@ if (cluster.isMaster) {
    * Create HTTP server.
    */
 
-  var server = https.createServer(app);
+  var server = http.createServer(app);
 
   /**
    * Listen on provided port, on all network interfaces.
