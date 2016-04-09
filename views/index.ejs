@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 			
-		<script id="dataStuff" name="dataStuff" type="text/javascript" data-amount="<%= data.amount %>" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>" data-tunnel="<%= data.tunnel %>" data-vortex="<%= data.vortex %>">
+		<script id="dataStuff" name="dataStuff" type="text/javascript" data-gravity="<%= data.gravity %>" data-wind="<%= data.wind %>" data-yVelocity="<%= data.yVelocity %>" data-xVelocity="<%= data.xVelocity %>" data-opacity="<%= data.opacity %>" data-size="<%= data.size %>" data-loopTime="<%= data.loopTime %>" data-red="<%= data.red %>" data-blue="<%= data.blue %>" data-green="<%= data.green %>" data-particleType="<%= data.particleType %>" data-tunnel="<%= data.tunnel %>" data-vortex="<%= data.vortex %>" data-density="<%= data.density %>">
 		
 		</script>
 		
@@ -18,6 +18,8 @@
 
 	<body>
 
+		<h2 class="contact" style="position: absolute; right: 0; top: 0;">contact: <span>pearcedesign93@gmail.com</span> </h2>
+
 		<form id="effects-rack" class="slider-form" action="/particle" method="post">
 			
 			<div class="wrapper">
@@ -25,6 +27,10 @@
 				<h1>Particle Playground</h1>
 				
 				<button type="submit" value="submit" class="btn btn-primary">update values</button>
+
+				<h4 id="density">density</h4>
+
+				<input type="range" value="<%= data.density %>" name="density" min="1" max="15">
 	
 				<% if (data.tunnel) { %>
 				<select value="<%= data.tunnel %>" name="tunnel">
@@ -94,7 +100,7 @@
 
 				<h4>loop time</h4>
 
-				<input type="range" value="<%= data.loopTime %>" name="loopTime" min="1" max="1200">
+				<input type="range" value="<%= data.loopTime %>" name="loopTime" min="4" max="1200">
 			
 
 				

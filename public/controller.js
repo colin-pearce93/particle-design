@@ -1,6 +1,5 @@
 
-var amount  = document.getElementById("dataStuff").getAttribute("data-amount"),
-    gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
+var gravity = document.getElementById("dataStuff").getAttribute("data-gravity"),
     wind    = document.getElementById("dataStuff").getAttribute("data-wind"),
     yV      = document.getElementById("dataStuff").getAttribute("data-yVelocity"),
     xV      = document.getElementById("dataStuff").getAttribute("data-xVelocity"),
@@ -12,15 +11,15 @@ var amount  = document.getElementById("dataStuff").getAttribute("data-amount"),
     green   = document.getElementById("dataStuff").getAttribute("data-green"),
     type    = document.getElementById("dataStuff").getAttribute("data-particleType"),
     tunnel  = document.getElementById("dataStuff").getAttribute("data-tunnel"),
-    vortex  = document.getElementById("dataStuff").getAttribute("data-vortex");
+    vortex  = document.getElementById("dataStuff").getAttribute("data-vortex"),
+    density  = document.getElementById("dataStuff").getAttribute("data-density");
 	
-    amount  = Number(amount);
     gravity = Number(gravity);
     wind    = Number(wind);
     yV      = Number(yV);
     xV      = Number(xV);
     opacity = Number(opacity);
-    radius  = Number(radius);
+    radius  = Math.floor(Number(radius) / 2) + 1;
     time    = Number(time);
     red     = Number(red);
     blue    = Number(blue);
@@ -28,30 +27,35 @@ var amount  = document.getElementById("dataStuff").getAttribute("data-amount"),
     type    = Number(type);
     tunnel  = Number(tunnel);
     vortex  = Number(vortex);
+    density = Number(density);
+
+
+var counter = 0;
 
 window.onload = function(){
-	particleField(amount, gravity, wind, yV, xV, opacity, radius, time, red, blue, green, type, tunnel, vortex);
+	particleField(gravity, wind, yV, xV, opacity, radius, time, red, blue, green, type, tunnel, vortex, density);
 }
 
-function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, g, type, tunnel, vortex){
+function particleField(force1, force2, vY, vX, opac, weight, time, r, b, g, type, tunnel, vortex, density){
 
 	console.log(arguments);
 
-    var particleAmount = quant,
-	grav           = force1,   // 1 - 1000
-	wind           = force2,   // 1 - 1000
-	yVelocity      = vY,       // 1 - 1000
-	xVelocity      = vX,       // 1 - 1000
-	opacity        = opac,     // 1 - 100
-	size           = weight,   // 1 - 90
-	loopTime       = time,     // 1- 1200
-	red            = r,        // 0 - 355
-	blue           = b,        // 0 - 355
-	green          = g,        // 0 - 355
-	dots           = type,	   // 0 - 1
-	tunnel         = tunnel,   // 0 - 1
-	vortex         = vortex;   // 1- 5	
+    var grav           = force1,   // 1 - 1000
+		wind           = force2,   // 1 - 1000
+		yVelocity      = vY,       // 1 - 1000
+		xVelocity      = vX,       // 1 - 1000
+		opacity        = opac,     // 1 - 100
+		size           = weight,   // 1 - 90
+		loopTime       = time,     // 1- 1200
+		red            = r,        // 0 - 355
+		blue           = b,        // 0 - 355
+		green          = g,        // 0 - 355
+		dots           = type,	   // 0 - 1
+		tunnel         = tunnel,   // 0 - 1
+		vortex         = vortex,   // 1- 5	
+		density        = density;
 
+	density = 16 - density;
 	vortex = 6 - vortex;
 	opacity = 1001 - opacity;
 
@@ -145,7 +149,7 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 			}
 
 			if (tunnel) {
-				if (this.x < canvas.width + canvas.width / 2 + 50) {
+				if (this.x < canvas.width + canvas.width / 2 + 85) {
 					if (this.x > canvas.width / 2) {
 						this.vx -= .05;
 					} else {
@@ -170,7 +174,11 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 			c.fillRect(0, 0, canvas.width, canvas.height);
 		}
 		
-		new Particle;
+		if (counter % density === 0) {
+			new Particle;
+		} // need to add a limiter
+		
+		counter += 1;
 		
 		for (var i in particleMem) {
 			particleMem[i].drawCircle();

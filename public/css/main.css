@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=VT323);
+
 
 * {
 	margin: 0;
@@ -14,6 +16,17 @@ canvas {
 	margin: 0;
 	padding: 0;
 	z-index: 0;
+}
+
+.contact {
+  font-family: arial;
+  font-size: 11px;
+  color: rgba(255, 255, 255, .9);
+}
+
+.contact span {
+  font-size: 14px;
+  color: rgb(120, 135, 255);
 }
 
 .slider-form {
@@ -36,13 +49,12 @@ canvas {
   padding-left: 27px;
   padding-right: 27px;
   padding-bottom: 50px;
-  border-radius: 3px;
   width: 100%;
   height: 100%;
   border-width: 0px 1px 0px 0px;
   border-color: lightblue;
   border-style: solid;
-  background-color: #0E0B16;
+  background-color: rgba(255, 255, 255, .90);
   
 }
 .wrapper > * {
@@ -50,23 +62,25 @@ canvas {
 }
 
 .wrapper h1 {
-	width: 100%;
+	width: 120%;
   margin-bottom: -35px;
-  margin-top: 20px;
+  margin-top: 0px;
+  margin-left: 0px;
   padding: 3px;
-	font-size: 13px;
-	font-family: arial;
-	color: rgb(240, 255, 240);
+	font-size: 21px;
+	font-family: 'VT323', arial;
+	color: black;
 
 
 }
 .wrapper h4 {
   width: 100%;
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 30px;
-  font-family: arial;
+  font-family: 'VT323', arial;
   text-align: center;
-  color: rgba(220, 220, 220, 1);
+  color: rgb(15, 15, 15);
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, .1);
   
   z-index: 0;
 }
@@ -75,6 +89,9 @@ canvas {
 }
 #vortex-size {
   margin-top: 7px;
+}
+#density {
+  margin-top: 13px;
 }
 .wrapper select {
   margin: 0;
@@ -90,7 +107,7 @@ canvas {
   height: 45px;
   border-width: 0px;
   border-radius: none;
-  background-color: rgb(140, 130, 255);
+  background-color: rgb(120, 135, 255);
   text-decoration: underline;
   font-size: 19px;
   color: white;
@@ -120,7 +137,7 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 1.7px;
   cursor: pointer;
   box-shadow: 5.1px 5.1px 1px rgba(0, 0, 0, 0.07), 0px 0px 5.1px rgba(13, 13, 13, 0.07);
-  background-color: lightblue;
+  background-color: black;
   border-radius: 0px;
   border: 0px solid #010101;
 }
@@ -131,22 +148,20 @@ input[type=range]::-webkit-slider-thumb {
   width: 13px;
   border-radius: 50%;
 
-  background: #A239C2;
+  background: rgb(120, 135, 255);
   cursor: pointer;
   -webkit-appearance: none;
  margin-top: -6px;
 
   
 }
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #cee1f1;
-}
+
 input[type=range]::-moz-range-track {
   width: 100%;
   height: 1.7px;
   cursor: pointer;
   box-shadow: 5.1px 5.1px 1px rgba(0, 0, 0, 0.07), 0px 0px 5.1px rgba(13, 13, 13, 0.07);
-  background-color: lightblue;
+  background-color: black;
 
   border-radius: 0px;
   border: 0px solid #010101;
@@ -158,7 +173,7 @@ input[type=range]::-moz-range-thumb {
   width: 13px;
   border-radius: 50%;
 
-  background: #A239C2;
+  background: rgb(120, 135, 255);
   cursor: pointer;
   margin-top: -6px;
 }
@@ -189,7 +204,7 @@ input[type=range]::-ms-thumb {
   height: 14px;
   width: 44px;
   border-radius: 0px;
-  background: #ffffff;
+  background: rgb(120, 135, 255);
   cursor: pointer;
   height: 4.4px;
 }
