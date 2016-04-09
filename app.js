@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
+var https = require('https');
 
 var routes = require('./routes/index');
 
@@ -15,22 +16,20 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.enable('trust proxy');
 
+if (!(app.get('env') === 'development')) {
 
-// if (!(app.get('env') === 'development')) {
-
-//   app.enable('trust proxy');
-
-//   app.use (function (req, res, next) {
-//       if (req.secure) {
-//               // request was via https, so do no special handling
-//               next();
-//       } else {
-//               // request was via http, so redirect to https
-//               res.redirect('https://' + req.headers.host + req.url);
-//       }
-//   });
-// }
+  app.use (function (req, res, next) {
+      if (req.secure) {
+              // request was via https, so do no special handling
+              next();
+      } else {
+              // request was via http, so redirect to https
+              res.redirect('https://' + req.headers.host + req.url);
+      }
+  });
+}
 
 
 
