@@ -10,7 +10,6 @@ window.onload = function(){
 
 
 
-
 function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, b, type){
 
 	console.log(arguments);
@@ -28,8 +27,6 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, 
 		green          = b, // 0 - 255
 		dots           = type;
 	
-	
-
 	var canvas 		   = document.createElement("canvas"),
 		c	   		   = canvas.getContext("2d"),
 		particleMem    = {},
@@ -52,7 +49,6 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, 
 		this.vx      = xVelocity;
 		this.gravity = .00000005 * grav;
 		
-
 		this.alphaRadians = Math.PI;
 		this.alpha        = 0;
 
@@ -67,7 +63,6 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, 
 		//causes variation in opacity depending on the particle's height
 		this.alphaScale = opacity / this.radius;
 		
-
 		if (this.id % loopTime === 0) {
 			c.fillStyle = "black";
 			c.fillRect(0, 0, canvas.width, canvas.height);
@@ -104,8 +99,7 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, g, 
 					this.gravity -= -.00000007;
 				}
 			} 
-			
-			
+						
 			c.beginPath();
 			c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
 			c.fill();
