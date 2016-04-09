@@ -24,7 +24,7 @@
 
 				<h1>Particle Playground</h1>
 				
-				<button type="submit" value="submit" class="btn btn-primary">render new pattern</button>
+				<button type="submit" value="submit" class="btn btn-primary">update values</button>
 	
 				<% if (data.tunnel) { %>
 				<select value="<%= data.tunnel %>" name="tunnel">
@@ -38,7 +38,8 @@
 					<option value="1">vortex</option>
 				</select>
 				<% } %>
-
+	
+				<h4 id="vortex-size">vortex size</h4>
 				<input type="range" value="<%= data.vortex %>" name="vortex" min="1" max="5">
 
 				
@@ -56,7 +57,7 @@
 				<% } %>
 				
 
-				<h4>gravity</h4>
+				<h4 id="top-label">gravity</h4>
 
 				<input type="range" value="<%= data.gravity %>" name="gravity" min="1" max="1000">
 				

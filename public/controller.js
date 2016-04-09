@@ -53,9 +53,15 @@ function particleField(quant, force1, force2, vY, vX, opac, weight, time, r, b, 
 		tunnel         = tunnel,		  // 0 - 1
 		vortex         = vortex;     // 1- 5	
 
+		vortex = 6 - vortex;
 		opacity = 1001 - opacity;
 		if (dots) {
 			particleAmount = 2;
+		}
+		if (size < 5) {
+			size = size / 1.5;
+		} else if (size < 10) {
+			size = size / 1.3;
 		}
 	
 	var canvas 		   = document.createElement("canvas"),
