@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -17,24 +16,24 @@ app.set('view engine', 'ejs');
 
 
 
-// if (!(app.get('env') === 'development')) {
+if (!(app.get('env') === 'development')) {
 
-//   app.enable('trust proxy');
+  app.enable('trust proxy');
 
-//   app.use (function (req, res, next) {
-//       if (req.secure) {
-//               // request was via https, so do no special handling
-//               next();
-//       } else {
-//               // request was via http, so redirect to https
-//               res.redirect('https://' + req.headers.host + req.url);
-//       }
-//   });
-// }
+  app.use (function (req, res, next) {
+      if (req.secure) {
+              // request was via https, so do no special handling
+              next();
+      } else {
+              // request was via http, so redirect to https
+              res.redirect('https://' + req.headers.host + req.url);
+      }
+  });
+}
 
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
