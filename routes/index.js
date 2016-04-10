@@ -8,20 +8,20 @@ router.get('/', function(req, res, next) {
   res.render('index.ejs', { 
   		title: "Express",
 		data: {
-			gravity:      2,
+			gravity:      100,
 			wind:         1,
-			yVelocity:    7,
-			xVelocity:    5,
+			yVelocity:    120,
+			xVelocity:    90,
 			opacity:    960,
 			size:         3,
 			loopTime:   300,
-			red:        255,
+			red:        55,
 			blue:       200,
 			green:      200,
-			particleType: 1,
-			tunnel:       0,
+			particleType: 0,
+			tunnel:       1,
 			vortex:       1,
-			density:      15
+			density:      5
 		},
 		reset: true  
 	});
