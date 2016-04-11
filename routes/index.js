@@ -16,11 +16,11 @@ router.get('/', function(req, res, next) {
 			size:         3,
 			loopTime:   300,
 			red:        55,
-			blue:       200,
-			green:      200,
+			blue:       100,
+			green:      100,
 			particleType: 0,
 			tunnel:       1,
-			vortex:       1,
+			vortex:       5,
 			density:      5
 		},
 		reset: true  
