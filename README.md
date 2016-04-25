@@ -6,6 +6,6 @@ I'm using Express with Node for the backend. All client side code is vanilla JS 
 
 Have fun playing with some particles! 
 
-The application is essentially a boilerplate for express which means the main code to look for on this project is inside of the /public folder.
+The application is essentially a boilerplate for express which means the main (original) code to look for on this project is inside of the /public folder.
 
 
